@@ -1,0 +1,1339 @@
+<!doctype html>
+<html lang="pt">
+
+<head>
+    <title>Interrail</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Google Fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <style> * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #fff;
+        border-bottom: 1px solid #ddd;
+        box-shadow:2px 2px 20px #5e5e5e;
+    }
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; 
+    }
+    .navbar-toggler {
+        cursor: pointer; 
+    }
+    .bar1, .bar2, .bar3 { 
+        width: 23px; 
+        height: 3px; 
+        margin: 5px; 
+        background: #5e5e5e; 
+        transition: all 0.5s ease; 
+    }
+    .change .bar1 { 
+        transform: translate(7px, 4px) rotate(-90deg) scale(0.6);
+        border-radius: 5px; 
+    } 
+    .change .bar2 { 
+        transform: translate(0px, 10px) ; 
+        border-radius: 0 0 60px 60px;
+    } 
+    .change .bar3 { 
+        transform:  translate(-7px, -12px) rotate(90deg) scale(0.6); 
+        border-radius: 5px; 
+    }
+    .options {
+        display: none; 
+        margin-top: 10px; 
+        background-color: #f8f9fa; 
+        padding: 10px; 
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    body {
+        overflow-x: hidden;
+    }
+    .btn {
+        display: inline-block;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border: 0px solid transparent;
+        margin: 0px 5px;
+        font-size: 20px; 
+        border-radius: 5px;
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+    .btn-primary {
+        color: #5e5e5e;
+        background-color: #fff;
+    }
+    .btn-primary:hover {
+        background-color: #5e5e5e;
+    }
+    .logoEurorrail img {
+        width: 100px;
+    }
+    
+    .containerImagemDeFundo {
+        position: relative;
+        margin-top: 40px;
+        margin-bottom: 13px;
+    
+        width: 100%;
+        height: auto;
+    }
+    
+    .containerGrelhaFotos {
+        position: relative;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    
+        width: 100%;
+        height: auto;
+    }
+    
+    #CarrouselPaisesAuxilio {
+        height: 100px;
+    }
+    .carousel {
+        box-shadow: 2px 2px 20px #5e5e5e;
+    }
+    .carousel-item img {
+      width: 100%;
+      height: auto;
+    }
+    .text-center {
+      margin-top: 15px;
+      font-size: 15pt;
+      font-family: 'Roboto Mono';
+      color: #5e5e5e; 
+    }
+    .carousel .row {
+      display: flex;
+      justify-content: center;
+    }
+    .carousel .col-md-3 {
+      padding-top: 30px;
+      flex: 0 0 27%; 
+      max-width: 27%; 
+    }
+    
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      filter: invert(100%); 
+    }
+    
+    .LINKgaleria {
+        margin-top: 70px;
+        width: 100%;
+        height: auto;
+    }
+    
+    .fotoEsquerda1, .fotoEsquerda2, .fotoEsquerda3 {
+        max-width: 32%;
+        justify-self: center;
+    }
+    .fotoEsquerda4, .fotoEsquerda5 {
+        padding-top: 4px;
+        max-width: 48.4%;
+    }
+    .fotoDireita1 {
+        max-width: 80%;
+        align-self: flex-end;
+        padding-bottom: 5%;
+    }
+    .fotoDireita3 {
+        max-width: 80%;
+        align-self: flex-start;
+        padding-top: 5%;
+    }
+    .fotoDireita2 {
+        max-width: 60%;
+        align-self: center;
+    }
+    .progress-container, .progress-container2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 25%;
+        padding-top: 15%;
+    }
+    .progress-container p, .progress-container2 p {
+        align-self: flex-start;
+        margin: 5px;
+        padding-left: 10%;
+        font-family: 'Roboto Mono';
+        font-size: 20px;
+        font-weight: bold;
+        color: #5e5e5e
+    }
+    .comida, .beleza, .cultura {
+        width: 80%;
+        height: 25px;
+        font-family: 'Roboto Mono';
+        box-shadow: 5px 5px 5px #5e5e5e;
+        margin-bottom: 10%;
+    }
+    .Logo img{
+        width: 100%;
+        margin: 5% 0 5%;
+    }
+    .image-container {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .containerFimSite {
+        background-color: #5e5e5e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .containerFimSite img {
+        width: 650px;
+        height: auto;
+    }
+    .textoQuestionario p{
+        font-family: 'Roboto Mono';
+        font-weight: bold;
+        font-size: 35px;
+        color: #fff;
+        margin: -8px 0;
+    }
+    .coluna2questionario{
+        display: flex;
+        flex-direction: column; 
+        align-items: flex-start;
+        gap: 25px;
+    }
+    .card {
+        background-color: #5e5e5e;
+        color: #fff;
+        border: 4px solid #000;
+        border-radius: 0px;
+    
+        align-items: center;
+    
+        width: 500px;
+        height: auto;
+    
+        padding-top: 20px;
+    }
+    .card-body .form-label {
+        font-family: 'Roboto Mono';
+        color: #fff;
+        font-weight: bold;
+        font-size: 17px;
+    }
+    .card-body .form-control, .form-control:focus {
+        border: 0px;
+        background-color: #5e5e5e;
+        color: #fff;
+        font-size: 14px;
+        font-family: 'Roboto Mono';
+    
+        outline: none;
+        border-radius: 0px;
+        border-bottom: 2px solid #fff;
+        box-shadow: none;
+    }
+    .card-body .btn {
+        color: #ffc400;
+        border-radius: 25px;
+        border: 0px;
+        background-color: #fff;
+        font-size: 25px;
+        font-family: 'Roboto Mono';
+        font-weight: bold;
+        width: 400px;
+    }
+    .card-body .btn:hover {
+        color: #000f5e;
+    }
+    
+    .footer {
+        text-align: end;
+        font-family: 'Roboto Mono';
+        font-size: 15px;
+        padding-top: 15px;
+    
+        box-shadow: 2px 2px 20px #fff;
+        color: #5e5e5e;
+    }
+    
+    .alternativa1, .alternativa2, .navbar {
+        display: none;
+    }
+    
+    @media (max-width: 570px) {
+        .progress-container {
+            padding-top: 5%;
+            padding-bottom: 5%;
+        }
+        .Logo {
+            padding-top: 15%;
+        }
+    }
+    
+    /* ALTERNATIVA 2 */
+    @media (max-width: 770px) {
+        .fotoDireita1 {
+            padding-top: 3%;
+            align-self: center;
+        }
+        .fotoDireita2 {
+            align-self: center;
+        }
+        .fotoDireita3 {
+            align-self: center;
+            padding-bottom: 5%;
+        }
+        .progress-container {
+            padding-top: 5%;
+            padding-bottom: 10%;
+        }
+        .Logo {
+            padding-top: 10%;
+            padding-bottom: 5%;
+        }
+        .alternativa2, .navbar {
+            display: block;
+        }
+        .col-5.Paises .progress-container, .col-2, .navCustomizada {
+            display: none;
+        }
+        .containerFimSite {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .coluna2questionario{
+            margin-bottom: 40px;
+        }.footer {
+            font-size: 12px;
+        }
+    }
+    
+    @media (max-width: 1000px) {
+        .fotoDireita1 {
+            padding-bottom: 7%;
+        }
+        .fotoDireita3 {
+            padding-top: 7%;
+        }
+        .progress-container {
+            padding-bottom: 0;
+        }
+    }
+    
+    @media (max-width: 1100px) {
+        .progress-container {
+            padding-bottom: 0;
+        }
+        .Logo {
+            padding-top: 5%;
+        }
+    }
+    
+    /* ALTERNATIVA 1 */
+    @media (max-width: 1200px) {
+        .fotoDireita1 {
+            padding-bottom: 6%;
+        }
+        .fotoDireita3 {
+            padding-top: 6%;
+        }
+        .fotoDireita1, .fotoDireita2, .fotoDireita3 {
+            align-self: center;
+        }
+        .col-5.Paises {
+            flex: 40%;
+        }
+        .col-2 {
+            flex:20%;
+            padding-bottom: 1%;
+            margin-top: 3%;
+        }
+        .col-5.progressBars {
+            flex: 50%;
+        }
+        .progress-container {
+            padding-bottom: 0;
+        }
+        .Logo {
+            padding-top: 5%;
+        }
+        .alternativa1 {
+            display: block;
+        }
+        .col-5.progressBars {
+            display: none;
+        }
+    }
+    
+    @media (max-width: 1300px) {
+        .progress-container {
+            padding-top: 5%;
+        }
+        .containerFimSite img {
+            width: 416px;
+        }
+        .textoQuestionario p{
+            font-size: 22.4px;
+        }
+        .card {
+            width: 320px;
+            padding-top: 5px;
+        }
+        .card-body .form-label {
+            font-size: 10.9px;
+        }
+        .card-body .form-control {
+            font-size: 9px;
+        }
+        .card-body .btn {
+            font-size: 16px;
+            width: 256px;
+        }
+        .coluna2questionario{
+            gap: 5px;
+        }
+        .containerFimSite {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+        }
+    }
+    
+    @media (max-width: 1500px) {
+        .progress-container {
+            padding-top: 7%;
+        }
+    }
+    
+    @media (max-width: 1700px) {
+        .progress-container {
+            padding-top: 10%;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <header class="sticky-top">
+        <nav>
+            <div class="navbar">
+              <div class="navbar-toggler">
+                <div class="bar bar1"></div>
+                <div class="bar bar2"></div>
+                <div class="bar bar3"></div>
+              </div>
+              <div class="options" style="display: none;">
+                <p>Opção 1</p>
+                <p>Opção 2</p>
+                <p>Opção 3</p>
+              </div>
+            </div>
+            <div class="navCustomizada">
+              <a href="#" class="btn btn-primary" role="button" aria-disabled="true">Home</a>
+              <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Locais visitados</button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#Espanha">Espanha</a></li>
+                  <li><a class="dropdown-item" href="#Mónaco">Mónaco</a></li>
+                  <li><a class="dropdown-item" href="#Suíça">Suíça</a></li>
+                  <li><a class="dropdown-item" href="#Áustria">Áustria</a></li>
+                  <li><a class="dropdown-item" href="#Hungria">Hungria</a></li>
+                  <li><a class="dropdown-item" href="#Croácia">Croácia</a></li>
+                  <li><a class="dropdown-item" href="#Eslovénia">Eslovénia</a></li>
+                  <li><a class="dropdown-item" href="#Itália">Itália</a></li>
+                  <li><a class="dropdown-item" href="#Vaticano">Vaticano</a></li>
+                  <li><a class="dropdown-item" href="#Portugal">Portugal</a></li>
+                </ul>
+              <a href="#CarrouselPaisesAuxilio" class="btn btn-primary" role="button" aria-disabled="true">Galeria</a>
+              <a href="#MapaEQuestionario" class="btn btn-primary" role="button" aria-disabled="true">Informações</a>
+            </div>
+        </nav>
+        <div class="logoEurorrail">
+          <a href="https://www.interrail.eu" target="_blank">
+            <img src="/img/MEU/BANDEIRAS & LOGOS/LOGOS/Interrail logo.png" alt="Interrail Eurorrail Logo">
+          </a>
+        </div>
+    </header>
+    <main>
+        <div class="containerImagemDeFundo">
+            <img src="/img/MEU/BANDEIRAS & LOGOS/LOGOS/INTERRAIL IMAGEM DE FUNDO.png" alt="Imagem de fundo INTERRRAIL" class="containerImagemDeFundo">
+        </div>
+
+        <div class="containerGrelhaFotos">
+          <img src="/img/MEU/IMAGENS GRELHA.png" alt="Imagem de fundo INTERRRAIL" class="containerGrelhaFotos">
+        </div>
+
+        <!-- Conteudo de ajuste para deslocamento de página -->
+        <div id="CarrouselPaisesAuxilio"></div>
+
+        <div id="CarrouselPaises" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-md-3">
+                  <a href="#Espanha">
+                    <img src="/img/MEU/BANDEIRAS & LOGOS/BANDEIRAS/ESPANHA.png" alt="Bandeira da Espanha">
+                  </a>
+                  <p class="text-center">Espanha</p>
+                </div>
+                <div class="col-md-3">
+                  <a href="#Mónaco">
+                    <img src="/img/MEU/BANDEIRAS & LOGOS/BANDEIRAS/MÓNACO.png" alt="Bandeira do Mónaco">
+                  </a>                  
+                  <p class="text-center">Mónaco</p>
+                </div> 
+              </div>
+            </div>
+        
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-3">
+                  <a href="#Suíça">
+                    <img src="/img/MEU/BANDEIRAS & LOGOS/BANDEIRAS/SUÍÇA.png" alt="Bandeira da Suíça">
+                  </a>                  
+                  <p class="text-center">Suíça</p>
+                </div>
+                <div class="col-md-3">
+                  <a href="#Áustria">
+                    <img src="/img/MEU/BANDEIRAS & LOGOS/BANDEIRAS/ÁUSTRIA.png" alt="Bandeira da Áustria">
+                  </a>                  
+                  <p class="text-center">Áustria</p>
+                </div>
+              </div>
+            </div>
+        
+            <!-- Slide 3  -->
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-3">
+                  <a href="#Hungria">
+                    <img src="/img/MEU/BANDEIRAS & LOGOS/BANDEIRAS/HUNGRIA.png" alt="Bandeira da Hungria">
+                  </a>                  
+                  <p class="text-center">Hungria</p>
+                </div>
+                <div class="col-md-3">
+                  <a href="#Croácia">
+                    <img src="/img/MEU/BANDEIRAS & LOGOS/BANDEIRAS/CROÁCIA.png" alt="Bandeira da Croácia">
+                  </a>                 
+                  <p class="text-center">Croácia</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 4  -->
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-3">
+                  <a href="#Eslovénia">
+                    <img src="/img/MEU/BANDEIRAS & LOGOS/BANDEIRAS/ESLOVÉNIA.png" alt="Bandeira da Eslovénia">
+                  </a>                  
+                  <p class="text-center">Eslovénia</p>
+                </div>
+                <div class="col-md-3">
+                  <a href="#Itália">
+                    <img src="/img/MEU/BANDEIRAS & LOGOS/BANDEIRAS/ITÁLIA.png" alt="Bandeira da Itália">
+                  </a>                  
+                  <p class="text-center">Itália</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 5  -->
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-3">
+                  <a href="#Vaticano">
+                    <img src="/img/MEU/BANDEIRAS & LOGOS/BANDEIRAS/VATICANO.png" alt="Bandeira do Vaticano">
+                  </a>                  
+                  <p class="text-center">Vaticano</p>
+                </div>
+                <div class="col-md-3">
+                  <a href="#Portugal">
+                    <img src="/img/MEU/BANDEIRAS & LOGOS/BANDEIRAS/PORTUGAL.png" alt="Bandeira de Portugal">
+                  </a>                  
+                  <p class="text-center">Portugal</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Controlos do Carroussel -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#CarrouselPaises" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#CarrouselPaises" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+          </button>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>    
+        
+        <a href="https://iselpt-my.sharepoint.com/:f:/g/personal/a51628_alunos_isel_pt/Esro6WB4Yj9Ck7IaTDliJ9YBZIwD3-Bh0PRPsZbHtaiRYg?e=ZNvRc4" target="_blank">
+          <img src="/img/MEU/BANDEIRAS & LOGOS/LOGOS/LINK para a galeria inteira.png" alt="LINK para a galeria inteira" class="LINKgaleria">
+        </a>    
+        
+        <article id="secçaoPaises">
+          <section id="Espanha">
+            <div class="row">
+              <div class="Logo">
+                <img src="/img/MEU/BANDEIRAS & LOGOS/LOGOS/ESPANHA LOGO.png" alt="Logo Espanha" >
+              </div>
+  
+              <div class="col-5 Paises">
+                  <div class="container fotosEsquerda">
+                    <img src="/img/MEU/Espanha/pé1.png" alt="" class="fotoEsquerda1 ">
+                    <img src="/img/MEU/Espanha/pé2.png" alt="" class="fotoEsquerda2">
+                    <img src="/img/MEU/Espanha/pé4.JPG" alt="" class="fotoEsquerda3">
+                    <img src="/img/MEU/Espanha/deitada1.JPG" alt="" class="fotoEsquerda4">
+                    <img src="/img/MEU/Espanha/deitada2.JPG" alt="" class="fotoEsquerda5">
+                  </div>
+                  <div class="alternativa2">
+                    <div class="image-container">
+                      <img src="/img/MEU/Espanha/deitada3.JPG" alt="" class="fotoDireita1">
+                      <img src="/img/MEU/Espanha/pé3.JPG" alt="" class="fotoDireita2">
+                      <img src="/img/MEU/Espanha/deitada4.JPG" alt="" class="fotoDireita3">
+                    </div>
+                  </div>
+                  <div class="alternativa1">
+                    <div class="progress-container2">
+                      <p>Comida</p>
+                      <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 90%; background-color: #e20a0a;">9 / 10</div>
+                      </div>
+                      <p>Beleza</p>
+                      <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 80%; background-color: #febc22;">8 / 10</div>
+                      </div>
+                      <p>Cultura</p>
+                      <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 70%; background-color: #e20a0a;">7 / 10</div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+      
+              <div class="col-2 fotosDireita">
+                <div class="image-container">
+                  <img src="/img/MEU/Espanha/deitada3.JPG" alt="" class="fotoDireita1">
+                  <img src="/img/MEU/Espanha/pé3.JPG" alt="" class="fotoDireita2">
+                  <img src="/img/MEU/Espanha/deitada4.JPG" alt="" class="fotoDireita3">
+                </div>
+              </div>
+      
+              <div class="col-5 progressBars">
+                  <div class="progress-container">
+                    <p>Comida</p>
+                    <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 90%; background-color: #e20a0a;">9 / 10</div>
+                    </div>
+                    <p>Beleza</p>
+                    <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 80%; background-color: #febc22;">8 / 10</div>
+                    </div>
+                    <p>Cultura</p>
+                    <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 70%; background-color: #e20a0a;">7 / 10</div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </section>
+          <section id="Mónaco"></section>
+            <div class="row">
+              <div class="Logo">
+                <img src="/img/MEU/BANDEIRAS & LOGOS/LOGOS/MÓNACO LOGO.png" alt="Logo Mónaco" >
+              </div>
+  
+              <div class="col-5 Paises">
+                <div class="progress-container">
+                  <p>Comida</p>
+                  <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%; background-color: #e20a0a;">5 / 10</div>
+                  </div>
+                  <p>Beleza</p>
+                  <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 70%; background-color: #e20a0a;">7 / 10</div>
+                  </div>
+                  <p>Cultura</p>
+                  <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 70%; background-color: #e20a0a;">7 / 10</div>
+                  </div>
+                </div>
+                <div class="alternativa1">
+                  <div class="container fotosEsquerda">
+                    <img src="/img/MEU/Mónaco/pé3.JPG" alt="" class="fotoEsquerda1">
+                    <img src="/img/MEU/Mónaco/pé2.JPG" alt="" class="fotoEsquerda2">
+                    <img src="/img/MEU/Mónaco/pé4.JPG" alt="" class="fotoEsquerda3">
+                    <img src="/img/MEU/Mónaco/deitada1.JPG" alt="" class="fotoEsquerda4">
+                    <img src="/img/MEU/Mónaco/deitada3.JPG" alt="" class="fotoEsquerda5">
+                  </div>
+                </div>
+                <div class="alternativa2">
+                  <div class="image-container">
+                    <img src="/img/MEU/Mónaco/deitada2.JPG" alt="" class="fotoDireita1">
+                    <img src="/img/MEU/Mónaco/pé1.JPG" alt="" class="fotoDireita2">
+                    <img src="/img/MEU/Mónaco/deitada4.JPG" alt="" class="fotoDireita3">
+                  </div>
+                  <div class="progress-container2">
+                    <p>Comida</p>
+                    <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 50%; background-color: #e20a0a;">5 / 10</div>
+                    </div>
+                    <p>Beleza</p>
+                    <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 70%; background-color: #e20a0a;">7 / 10</div>
+                    </div>
+                    <p>Cultura</p>
+                    <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 70%; background-color: #e20a0a;">7 / 10</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="col-2 fotosDireita">
+                <div class="image-container">
+                  <img src="/img/MEU/Mónaco/deitada2.JPG" alt="" class="fotoDireita1">
+                  <img src="/img/MEU/Mónaco/pé1.JPG" alt="" class="fotoDireita2">
+                  <img src="/img/MEU/Mónaco/deitada4.JPG" alt="" class="fotoDireita3">
+                </div>
+              </div>
+      
+              <div class="col-5 progressBars">
+                <div class="container fotosEsquerda">
+                  <img src="/img/MEU/Mónaco/pé3.JPG" alt="" class="fotoEsquerda1">
+                  <img src="/img/MEU/Mónaco/pé2.JPG" alt="" class="fotoEsquerda2">
+                  <img src="/img/MEU/Mónaco/pé4.JPG" alt="" class="fotoEsquerda3">
+                  <img src="/img/MEU/Mónaco/deitada1.JPG" alt="" class="fotoEsquerda4">
+                  <img src="/img/MEU/Mónaco/deitada3.JPG" alt="" class="fotoEsquerda5">
+                </div> 
+              </div>
+            </div>
+          </section>
+          <section id="Suíça"></section>
+            <div class="row">
+              <div class="Logo">
+                <img src="/img/MEU/BANDEIRAS & LOGOS/LOGOS/SUÍÇA LOGO.png" alt="Logo Suíça" >
+              </div>
+  
+              <div class="col-5 Paises">
+                  <div class="container fotosEsquerda">
+                    <img src="/img/MEU/Suíça/pé1.png" alt="" class="fotoEsquerda1">
+                    <img src="/img/MEU/Suíça/pé2.png" alt="" class="fotoEsquerda2">
+                    <img src="/img/MEU/Suíça/pé3.png" alt="" class="fotoEsquerda3">
+                    <img src="/img/MEU/Suíça/deitada1.JPG" alt="" class="fotoEsquerda4">
+                    <img src="/img/MEU/Suíça/deitada4.png" alt="" class="fotoEsquerda5">
+                  </div>
+                  <div class="alternativa2">
+                    <div class="image-container">
+                      <img src="/img/MEU/Suíça/deitada2.JPG" alt="" class="fotoDireita1">
+                      <img src="/img/MEU/Suíça/pé4.png" alt="" class="fotoDireita2">
+                      <img src="/img/MEU/Suíça/deitada3.JPG" alt="" class="fotoDireita3">
+                    </div>
+                  </div>
+                  <div class="alternativa1">
+                    <div class="progress-container2">
+                      <p>Comida</p>
+                      <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 60%; background-color: #e20a0a;">6 / 10</div>
+                      </div>
+                      <p>Beleza</p>
+                      <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 100%; background-color: #f0f0f0; color: #000;">10 / 10</div>
+                      </div>
+                      <p>Cultura</p>
+                      <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 80%; background-color: #e20a0a;">8 / 10</div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+      
+              <div class="col-2 fotosDireita">
+                <div class="image-container">
+                  <img src="/img/MEU/Suíça/deitada2.JPG" alt="" class="fotoDireita1">
+                  <img src="/img/MEU/Suíça/pé4.png" alt="" class="fotoDireita2">
+                  <img src="/img/MEU/Suíça/deitada3.JPG" alt="" class="fotoDireita3">
+                </div>
+              </div>
+      
+              <div class="col-5 progressBars">
+                  <div class="progress-container">
+                    <p>Comida</p>
+                    <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 60%; background-color: #e20a0a;">6 / 10</div>
+                    </div>
+                    <p>Beleza</p>
+                    <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 100%; background-color: #f0f0f0; color: #000;">10 / 10</div>
+                    </div>
+                    <p>Cultura</p>
+                    <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 80%; background-color: #e20a0a;">8 / 10</div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </section>
+          <section id="Áustria"></section>
+            <div class="row">
+              <div class="Logo">
+                <img src="/img/MEU/BANDEIRAS & LOGOS/LOGOS/ÁUSTRIA LOGO.png" alt="Logo Áustria" >
+              </div>
+  
+              <div class="col-5 Paises">
+                <div class="progress-container">
+                  <p>Comida</p>
+                  <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 70%; background-color: #e20a0a;">7 / 10</div>
+                  </div>
+                  <p>Beleza</p>
+                  <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 80%; background-color: #f0f0f0; color: #000;">8 / 10</div>
+                  </div>
+                  <p>Cultura</p>
+                  <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 90%; background-color: #e20a0a;">9 / 10</div>
+                  </div>
+                </div>
+                <div class="alternativa1">
+                  <div class="container fotosEsquerda">
+                    <img src="/img/MEU/Viena/pé1.JPG" alt="" class="fotoEsquerda1">
+                    <img src="/img/MEU/Viena/pé3.JPG" alt="" class="fotoEsquerda2">
+                    <img src="/img/MEU/Viena/pé2.JPG" alt="" class="fotoEsquerda3">
+                    <img src="/img/MEU/Viena/deitada3.JPG" alt="" class="fotoEsquerda4">
+                    <img src="/img/MEU/Viena/deitada4.JPG" alt="" class="fotoEsquerda5">
+                  </div>
+                </div>
+                <div class="alternativa2">
+                  <div class="image-container">
+                    <img src="/img/MEU/Viena/deitada1.png" alt="" class="fotoDireita1">
+                    <img src="/img/MEU/Viena/pé4.JPG" alt="" class="fotoDireita2">
+                    <img src="/img/MEU/Viena/deitada2.png" alt="" class="fotoDireita3">
+                  </div>
+                  <div class="progress-container2">
+                    <p>Comida</p>
+                    <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 70%; background-color: #e20a0a;">7 / 10</div>
+                    </div>
+                    <p>Beleza</p>
+                    <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 80%; background-color: #f0f0f0; color: #000;">8 / 10</div>
+                    </div>
+                    <p>Cultura</p>
+                    <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 90%; background-color: #e20a0a;">9 / 10</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="col-2 fotosDireita">
+                <div class="image-container">
+                  <img src="/img/MEU/Viena/deitada1.png" alt="" class="fotoDireita1">
+                  <img src="/img/MEU/Viena/pé4.JPG" alt="" class="fotoDireita2">
+                  <img src="/img/MEU/Viena/deitada2.png" alt="" class="fotoDireita3">
+                </div>
+              </div>
+      
+              <div class="col-5 progressBars">
+                  <div class="container fotosEsquerda">
+                    <img src="/img/MEU/Viena/pé1.JPG" alt="" class="fotoEsquerda1">
+                    <img src="/img/MEU/Viena/pé3.JPG" alt="" class="fotoEsquerda2">
+                    <img src="/img/MEU/Viena/pé2.JPG" alt="" class="fotoEsquerda3">
+                    <img src="/img/MEU/Viena/deitada3.JPG" alt="" class="fotoEsquerda4">
+                    <img src="/img/MEU/Viena/deitada4.JPG" alt="" class="fotoEsquerda5">
+                  </div>
+              </div>
+            </div>
+          </section>
+          <section id="Hungria"></section>
+            <div class="row">
+              <div class="Logo">
+                <img src="/img/MEU/BANDEIRAS & LOGOS/LOGOS/HUNGRIA LOGO.png" alt="Logo Hungria" >
+              </div>
+  
+              <div class="col-5 Paises">
+                  <div class="container fotosEsquerda">
+                    <img src="/img/MEU/Hungria/pé1.JPG" alt="" class="fotoEsquerda1">
+                    <img src="/img/MEU/Hungria/pé3.png" alt="" class="fotoEsquerda2">
+                    <img src="/img/MEU/Hungria/pé4.png" alt="" class="fotoEsquerda3">
+                    <img src="/img/MEU/Hungria/deitada2.JPG" alt="" class="fotoEsquerda4">
+                    <img src="/img/MEU/Hungria/deitada3.png" alt="" class="fotoEsquerda5">
+                  </div>
+                  <div class="alternativa2">
+                    <div class="image-container">
+                      <img src="/img/MEU/Hungria/deitada1.JPG" alt="" class="fotoDireita1">
+                      <img src="/img/MEU/Hungria/pé2.png" alt="" class="fotoDireita2">
+                      <img src="/img/MEU/Hungria/deitada4.png" alt="" class="fotoDireita3">
+                    </div>
+                  </div>
+                  <div class="alternativa1">
+                    <div class="progress-container2">
+                      <p>Comida</p>
+                      <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 50%; background-color: #e20a0a;">5 / 10</div>
+                      </div>
+                      <p>Beleza</p>
+                      <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 70%; background-color: #f0f0f0; color: #000;">7 / 10</div>
+                      </div>
+                      <p>Cultura</p>
+                      <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 70%; background-color: #436f4d;">7 / 10</div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+      
+              <div class="col-2 fotosDireita">
+                <div class="image-container">
+                  <img src="/img/MEU/Hungria/deitada1.JPG" alt="" class="fotoDireita1">
+                  <img src="/img/MEU/Hungria/pé2.png" alt="" class="fotoDireita2">
+                  <img src="/img/MEU/Hungria/deitada4.png" alt="" class="fotoDireita3">
+                </div>
+              </div>
+      
+              <div class="col-5 progressBars">
+                  <div class="progress-container">
+                    <p>Comida</p>
+                    <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 50%; background-color: #e20a0a;">5 / 10</div>
+                    </div>
+                    <p>Beleza</p>
+                    <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 70%; background-color: #f0f0f0; color: #000;">7 / 10</div>
+                    </div>
+                    <p>Cultura</p>
+                    <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 70%; background-color: #436f4d;">7 / 10</div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </section>
+          <section id="Croácia"></section>
+            <div class="row">
+              <div class="Logo">
+                <img src="/img/MEU/BANDEIRAS & LOGOS/LOGOS/CROÁCIA LOGO.png" alt="Logo Croácia" >
+              </div>
+  
+              <div class="col-5 Paises">
+                <div class="progress-container">
+                  <p>Comida</p>
+                  <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%; background-color: #e20a0a;">5 / 10</div>
+                  </div>
+                  <p>Beleza</p>
+                  <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 100%; background-color: #f0f0f0; color: #000;">10 / 10</div>
+                  </div>
+                  <p>Cultura</p>
+                  <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 60%; background-color: #002654;">6 / 10</div>
+                  </div>
+                </div>
+                <div class="alternativa1">
+                  <div class="container fotosEsquerda">
+                    <img src="/img/MEU/Croácia/pé3.JPG" alt="" class="fotoEsquerda1">
+                    <img src="/img/MEU/Croácia/pé2.png" alt="" class="fotoEsquerda2">
+                    <img src="/img/MEU/Croácia/pé4.JPG" alt="" class="fotoEsquerda3">
+                    <img src="/img/MEU/Croácia/deitada3.JPG" alt="" class="fotoEsquerda4">
+                    <img src="/img/MEU/Croácia/deitada4.png" alt="" class="fotoEsquerda5">
+                  </div>
+                </div>
+                <div class="alternativa2">
+                  <div class="image-container">
+                    <img src="/img/MEU/Croácia/deitada1.JPG" alt="" class="fotoDireita1">
+                    <img src="/img/MEU/Croácia/pé1.png" alt="" class="fotoDireita2">
+                    <img src="/img/MEU/Croácia/deitada2.JPG" alt="" class="fotoDireita3">
+                  </div>
+                  <div class="progress-container2">
+                    <p>Comida</p>
+                    <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 50%; background-color: #e20a0a;">5 / 10</div>
+                    </div>
+                    <p>Beleza</p>
+                    <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 100%; background-color: #f0f0f0; color: #000;">10 / 10</div>
+                    </div>
+                    <p>Cultura</p>
+                    <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 60%; background-color: #002654;">6 / 10</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="col-2 fotosDireita">
+                <div class="image-container">
+                  <img src="/img/MEU/Croácia/deitada1.JPG" alt="" class="fotoDireita1">
+                  <img src="/img/MEU/Croácia/pé1.png" alt="" class="fotoDireita2">
+                  <img src="/img/MEU/Croácia/deitada2.JPG" alt="" class="fotoDireita3">
+                </div>
+              </div>
+      
+              <div class="col-5 progressBars">
+                  <div class="container fotosEsquerda">
+                    <img src="/img/MEU/Croácia/pé3.JPG" alt="" class="fotoEsquerda1">
+                    <img src="/img/MEU/Croácia/pé2.png" alt="" class="fotoEsquerda2">
+                    <img src="/img/MEU/Croácia/pé4.JPG" alt="" class="fotoEsquerda3">
+                    <img src="/img/MEU/Croácia/deitada3.JPG" alt="" class="fotoEsquerda4">
+                    <img src="/img/MEU/Croácia/deitada4.png" alt="" class="fotoEsquerda5">
+                  </div>
+              </div>
+            </div>
+          </section>
+          <section id="Eslovénia"></section>
+            <div class="row">
+              <div class="Logo">
+                <img src="/img/MEU/BANDEIRAS & LOGOS/LOGOS/ESLOVÉNIA LOGO.png" alt="Logo Eslovénia" >
+              </div>
+  
+              <div class="col-5 Paises">
+                  <div class="container fotosEsquerda">
+                    <img src="/img/MEU/Eslovénia/pé2.png" alt="" class="fotoEsquerda1">
+                    <img src="/img/MEU/Eslovénia/pé1.png" alt="" class="fotoEsquerda2">
+                    <img src="/img/MEU/Eslovénia/pé4.png" alt="" class="fotoEsquerda3">
+                    <img src="/img/MEU/Eslovénia/deitada2.png" alt="" class="fotoEsquerda4">
+                    <img src="/img/MEU/Eslovénia/deitada4.png" alt="" class="fotoEsquerda5">
+                  </div>
+                  <div class="alternativa2">
+                    <div class="image-container">
+                      <img src="/img/MEU/Eslovénia/deitada2.png" alt="" class="fotoDireita1">
+                      <img src="/img/MEU/Eslovénia/pé3.png" alt="" class="fotoDireita2">
+                      <img src="/img/MEU/Eslovénia/deitada1.png" alt="" class="fotoDireita3">
+                    </div>
+                  </div>
+                  <div class="alternativa1">
+                    <div class="progress-container2">
+                      <p>Comida</p>
+                      <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 50%; background-color: #f0f0f0; color: #000;">5 / 10</div>
+                      </div>
+                      <p>Beleza</p>
+                      <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 60%; background-color: #002654;">6 / 10</div>
+                      </div>
+                      <p>Cultura</p>
+                      <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 60%; background-color: #e20a0a;">6 / 10</div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+      
+              <div class="col-2 fotosDireita">
+                <div class="image-container">
+                  <img src="/img/MEU/Eslovénia/deitada2.png" alt="" class="fotoDireita1">
+                  <img src="/img/MEU/Eslovénia/pé3.png" alt="" class="fotoDireita2">
+                  <img src="/img/MEU/Eslovénia/deitada1.png" alt="" class="fotoDireita3">
+                </div>
+              </div>
+      
+              <div class="col-5 progressBars">
+                  <div class="progress-container">
+                    <p>Comida</p>
+                    <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 50%; background-color: #f0f0f0; color: #000;">5 / 10</div>
+                    </div>
+                    <p>Beleza</p>
+                    <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 60%; background-color: #002654;">6 / 10</div>
+                    </div>
+                    <p>Cultura</p>
+                    <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 60%; background-color: #e20a0a;">6 / 10</div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </section>
+          <section id="Itália"></section>
+            <div class="row">
+              <div class="Logo">
+                <img src="/img/MEU/BANDEIRAS & LOGOS/LOGOS/ITÁLIA LOGO.png" alt="Logo Itália" >
+              </div>
+  
+              <div class="col-5 Paises">
+                <div class="progress-container">
+                  <p>Comida</p>
+                  <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 100%; background-color: #436f4d;">10 / 10</div>
+                  </div>
+                  <p>Beleza</p>
+                  <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 90%; background-color: #f0f0f0; color: #000;">9 / 10</div>
+                  </div>
+                  <p>Cultura</p>
+                  <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 80%; background-color: #e20a0a;">8 / 10</div>
+                  </div>
+                </div>
+                <div class="alternativa1">
+                  <div class="container fotosEsquerda">
+                    <img src="/img/MEU/Itália/pé1.JPG" alt="" class="fotoEsquerda1">
+                    <img src="/img/MEU/Itália/pé3.JPG" alt="" class="fotoEsquerda2">
+                    <img src="/img/MEU/Itália/pé2.JPG" alt="" class="fotoEsquerda3">
+                    <img src="/img/MEU/Itália/deitada1.JPG" alt="" class="fotoEsquerda4">
+                    <img src="/img/MEU/Itália/deitada4.JPG" alt="" class="fotoEsquerda5">
+                  </div>
+                </div>
+                <div class="alternativa2">
+                  <div class="image-container">
+                    <img src="/img/MEU/Itália/deitada2.JPG" alt="" class="fotoDireita1">
+                    <img src="/img/MEU/Itália/pé4.JPG" alt="" class="fotoDireita2">
+                    <img src="/img/MEU/Itália/deitada3.JPG" alt="" class="fotoDireita3">
+                  </div>
+                  <div class="progress-container2">
+                    <p>Comida</p>
+                    <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 100%; background-color: #436f4d;">10 / 10</div>
+                    </div>
+                    <p>Beleza</p>
+                    <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 90%; background-color: #f0f0f0; color: #000;">9 / 10</div>
+                    </div>
+                    <p>Cultura</p>
+                    <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 80%; background-color: #e20a0a;">8 / 10</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="col-2 fotosDireita">
+                <div class="image-container">
+                  <img src="/img/MEU/Itália/deitada2.JPG" alt="" class="fotoDireita1">
+                  <img src="/img/MEU/Itália/pé4.JPG" alt="" class="fotoDireita2">
+                  <img src="/img/MEU/Itália/deitada3.JPG" alt="" class="fotoDireita3">
+                </div>
+              </div>
+      
+              <div class="col-5 progressBars">
+                  <div class="container fotosEsquerda">
+                    <img src="/img/MEU/Itália/pé1.JPG" alt="" class="fotoEsquerda1">
+                    <img src="/img/MEU/Itália/pé3.JPG" alt="" class="fotoEsquerda2">
+                    <img src="/img/MEU/Itália/pé2.JPG" alt="" class="fotoEsquerda3">
+                    <img src="/img/MEU/Itália/deitada1.JPG" alt="" class="fotoEsquerda4">
+                    <img src="/img/MEU/Itália/deitada4.JPG" alt="" class="fotoEsquerda5">
+                  </div>
+              </div>
+            </div>
+          </section>
+          <section id="Vaticano"></section>
+            <div class="row">
+              <div class="Logo">
+                <img src="/img/MEU/BANDEIRAS & LOGOS/LOGOS/VATICANO LOGO.png" alt="Logo Vaticano" >
+              </div>
+  
+              <div class="col-5 Paises">
+                  <div class="container fotosEsquerda">
+                    <img src="/img/MEU/Vaticano/pé2.png" alt="" class="fotoEsquerda1">
+                    <img src="/img/MEU/Vaticano/pé1.png" alt="" class="fotoEsquerda2">
+                    <img src="/img/MEU/Vaticano/pé4.png" alt="" class="fotoEsquerda3">
+                    <img src="/img/MEU/Vaticano/deitada2.png" alt="" class="fotoEsquerda4">
+                    <img src="/img/MEU/Vaticano/deitada4.png" alt="" class="fotoEsquerda5">
+                  </div>
+                  <div class="alternativa2">
+                    <div class="image-container">
+                      <img src="/img/MEU/Vaticano/deitada1.png" alt="" class="fotoDireita1">
+                      <img src="/img/MEU/Vaticano/pé3.png" alt="" class="fotoDireita2">
+                      <img src="/img/MEU/Vaticano/deitada3.png" alt="" class="fotoDireita3">
+                    </div>
+                  </div>
+                  <div class="alternativa1">
+                    <div class="progress-container2">
+                      <p>Comida</p>
+                      <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 80%; background-color: #febc22;">8 / 10</div>
+                      </div>
+                      <p>Beleza</p>
+                      <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 80%; background-color: #febc22;">8 / 10</div>
+                      </div>
+                      <p>Cultura</p>
+                      <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 70%; background-color: #febc22;">10 / 10</div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+      
+              <div class="col-2 fotosDireita">
+                <div class="image-container">
+                  <img src="/img/MEU/Vaticano/deitada1.png" alt="" class="fotoDireita1">
+                  <img src="/img/MEU/Vaticano/pé3.png" alt="" class="fotoDireita2">
+                  <img src="/img/MEU/Vaticano/deitada3.png" alt="" class="fotoDireita3">
+                </div>
+              </div>
+      
+              <div class="col-5 progressBars">
+                  <div class="progress-container">
+                    <p>Comida</p>
+                    <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 80%; background-color: #febc22;">8 / 10</div>
+                    </div>
+                    <p>Beleza</p>
+                    <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 80%; background-color: #febc22;">8 / 10</div>
+                    </div>
+                    <p>Cultura</p>
+                    <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 70%; background-color: #febc22;">10 / 10</div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </section>
+          <section id="Portugal"></section>
+            <div class="row">
+              <div class="Logo">
+                <img src="/img/MEU/BANDEIRAS & LOGOS/LOGOS/PORTUGAL LOGO.png" alt="Logo Portugal" >
+              </div>
+  
+              <div class="col-5 Paises">
+                <div class="progress-container">
+                  <p>Comida</p>
+                  <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 90%; background-color: #436f4d;">9 / 10</div>
+                  </div>
+                  <p>Beleza</p>
+                  <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 70%; background-color: #febc22;">7 / 10</div>
+                  </div>
+                  <p>Cultura</p>
+                  <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 70%; background-color: #e20a0a;">7 / 10</div>
+                  </div>
+                </div>
+                <div class="alternativa1">
+                  <div class="container fotosEsquerda">
+                    <img src="/img/MEU/Portugal/pé3.png" alt="" class="fotoEsquerda1">
+                    <img src="/img/MEU/Portugal/pé2.png" alt="" class="fotoEsquerda2">
+                    <img src="/img/MEU/Portugal/pé4.png" alt="" class="fotoEsquerda3">
+                    <img src="/img/MEU/Portugal/deitada1.png" alt="" class="fotoEsquerda4">
+                    <img src="/img/MEU/Portugal/deitada3.png" alt="" class="fotoEsquerda5">
+                  </div>
+                </div>
+                <div class="alternativa2">
+                  <div class="image-container">
+                    <img src="/img/MEU/Portugal/deitada2.png" alt="" class="fotoDireita1">
+                    <img src="/img/MEU/Portugal/pé1.png" alt="" class="fotoDireita2">
+                    <img src="/img/MEU/Portugal/deitada4.png" alt="" class="fotoDireita3">
+                  </div>
+                  <div class="progress-container2">
+                    <p>Comida</p>
+                    <div class="progress comida" role="progressbar" aria-label="Comida" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 90%; background-color: #436f4d;">9 / 10</div>
+                    </div>
+                    <p>Beleza</p>
+                    <div class="progress beleza" role="progressbar" aria-label="Beleza" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 70%; background-color: #febc22;">7 / 10</div>
+                    </div>
+                    <p>Cultura</p>
+                    <div class="progress cultura" role="progressbar" aria-label="Cultura" aria-valuemin="0" aria-valuemax="100">
+                      <div class="progress-bar" style="width: 70%; background-color: #e20a0a;">7 / 10</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="col-2 fotosDireita">
+                <div class="image-container">
+                  <img src="/img/MEU/Portugal/deitada2.png" alt="" class="fotoDireita1">
+                  <img src="/img/MEU/Portugal/pé1.png" alt="" class="fotoDireita2">
+                  <img src="/img/MEU/Portugal/deitada4.png" alt="" class="fotoDireita3">
+                </div>
+              </div>
+      
+              <div class="col-5 progressBars">
+                  <div class="container fotosEsquerda">
+                    <img src="/img/MEU/Portugal/pé3.png" alt="" class="fotoEsquerda1">
+                    <img src="/img/MEU/Portugal/pé2.png" alt="" class="fotoEsquerda2">
+                    <img src="/img/MEU/Portugal/pé4.png" alt="" class="fotoEsquerda3">
+                    <img src="/img/MEU/Portugal/deitada1.png" alt="" class="fotoEsquerda4">
+                    <img src="/img/MEU/Portugal/deitada3.png" alt="" class="fotoEsquerda5">
+                  </div>
+              </div>
+            </div>
+          </section>
+        </article>
+        
+        <div id="MapaEQuestionario" class="containerFimSite">
+          <img src="/img/MEU/MAPAS/Mapa INTERRAIL - ponteado.png" alt="Mapa ponteado">
+          <div class="coluna2questionario">
+            <div class="textoQuestionario">
+              <p >Queres saber mais</p>
+              <p > sobre a viagem?</p>
+            </div>
+            <div class="card card-custom">
+              <div class="card-body">
+                <div class="mb-3">
+                  <label for="Nome" class="form-label">Nome</label>
+                  <input type="text" class="form-control" id="Nome">
+                </div>
+                <div class="mb-3">
+                  <label for="Email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="Email">
+                </div>
+                <div class="mb-3">
+                  <label for="Message" class="form-label">Conta-nos o que queres saber</label>
+                  <textarea class="form-control" id="Message" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">ENVIAR</button>
+              </div>
+            </div> 
+          </div>
+        </div>
+        
+    </main>
+    <div class="footer">
+      <p> © 2024 Copyright | Rafael Lemos & Manuel Carvalho </p>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {   
+        const navbarToggler = document.querySelector(".navbar-toggler");   
+        if (navbarToggler) {     
+          navbarToggler.addEventListener("click", function () {       
+            navbarToggler.classList.toggle("change");     
+          });   
+        } 
+      }); 
+    </script>
+</body>
+
+</html>
